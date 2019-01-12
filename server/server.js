@@ -1,16 +1,23 @@
 const express = require('express');
+var app = express();
 const path = require('path');
-const http = require('http');
-const socketIO = require('socket.io');
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 const publicPath = path.join(__dirname , '../public');
-var app = express();
-var server = http.createServer(app);
-
-var io = socketIO(server);
 
 io.on('connection', (socket) => {
     console.log('New user connected');
+
+    socket.emit('newMessage', {
+        from: "Abhishek",
+        text: "Can we meet up at 6:00",
+        createdAt: 123
+    });
+
+    socket.on('createMessage', (message) => {
+        console.log('Create Message', message);
+    });
  
     //Whenever someone disconnects this piece of code executed
     socket.on('disconnect', () => {
