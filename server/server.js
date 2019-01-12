@@ -9,14 +9,20 @@ const publicPath = path.join(__dirname , '../public');
 io.on('connection', (socket) => {
     console.log('New user connected');
 
-    socket.emit('newMessage', {
-        from: "Abhishek",
-        text: "Can we meet up at 6:00",
-        createdAt: 123
-    });
+    // socket.emit('newMessage', {
+    //     from: "Abhishek",
+    //     text: "Can we meet up at 6:00",
+    //     createdAt: 123
+    // });
 
     socket.on('createMessage', (message) => {
         console.log('Create Message', message);
+
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        }); 
     });
  
     //Whenever someone disconnects this piece of code executed
