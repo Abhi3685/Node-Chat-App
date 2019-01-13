@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/Abhi3685/Node-Chat-App/issues"
   },
-  "dependencies": {
-    "express": "^4.16.4",
-    "socket.io": "^2.2.0"
-  }
+  "homepage": "https://github.com/Abhi3685/Node-Chat-App#readme"
 }
