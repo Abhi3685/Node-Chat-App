@@ -11,8 +11,18 @@ var io = socketIO(server);
 io.on('connection', function(socket) {
     console.log('New User Connected.');
 
+    socket.emit('newMessage', {
+        from: "Admin",
+        text: "Welcome to the chat app.",
+        createdAt: new Date().getTime()
+    });
+
     socket.on('disconnect', function(){
         console.log('User Was Disconnected.');
+    });
+
+    socket.on('createMessage', function(msg){
+        console.log('Create Message', msg);
     });
 });
 
