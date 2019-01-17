@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Abhi3685/Node-Chat-App#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
   }
 }
