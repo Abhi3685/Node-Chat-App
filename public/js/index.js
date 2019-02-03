@@ -21,7 +21,8 @@ socket.on('newLocationMessage', function(msg){
     var a = $('<a target="_blank">My current location</a>');
 
     a.attr('href', msg.url);    
-    li.text(`${msg.from}: ` + a);
+    li.text(`${msg.from}: `);
+    li.append(a);
 
     $("#messages").append(li);
 });
