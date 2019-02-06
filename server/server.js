@@ -11,14 +11,13 @@ var server = http.createServer(app);
 var io = socketIO(server);
 
 io.on('connection', function(socket) {
-    console.log('New User Connected.');
+    // console.log('New User Connected.');
 
     socket.emit('newMessage', generateMessage("Admin", "Welcome To The Chat App"));
 
     socket.broadcast.emit('newMessage', generateMessage("Admin", "New User Joined"));
 
     socket.on('createMessage', function(msg, callback){
-        console.log('Create Message', msg);
         io.emit('newMessage', generateMessage(msg.from, msg.text));
         callback();
     });
@@ -28,7 +27,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function(){
-        console.log('User Was Disconnected.');
+        // console.log('User Was Disconnected.');
     });
 });
 

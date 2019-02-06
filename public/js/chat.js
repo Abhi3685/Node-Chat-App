@@ -1,5 +1,10 @@
 var socket = io();
 
+function scrollToBottom() {
+    var messages = document.getElementById("messages");
+    messages.scrollTop = messages.scrollHeight;
+}
+
 socket.on('connect', function(){
     console.log('Connected to server.');
 });
@@ -18,6 +23,7 @@ socket.on('newMessage', function(msg){
     });
 
     $("#messages").append(html);
+    scrollToBottom();
 });
 
 socket.on('newLocationMessage', function(msg){
@@ -30,6 +36,7 @@ socket.on('newLocationMessage', function(msg){
     });
 
     $("#messages").append(html);
+    scrollToBottom();
 });
 
 $("#message-form").on('submit', function(e) {
